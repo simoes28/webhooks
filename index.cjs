@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 });
 
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 9001;
 server.listen(PORT, () => {
     console.log(`Server started at http://localhost:${PORT}`);
     console.log(`Socket.IO endpoint: http://localhost:${PORT}`);
