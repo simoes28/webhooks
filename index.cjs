@@ -1,6 +1,3 @@
-"Hello World!"
-
-
 require("dotenv").config();
 const express = require("express");
 const http = require("http");
@@ -38,6 +35,10 @@ app.use("/newMessage", (req, res, next)=>{
     io.emit("webhookNewMessage", data);
 
     res.status(200).send("Webhook recebido com sucesso.")
+})
+
+app.use("/", (req, res, next)=>{
+    "Hello World!"
 })
 
 app.use((req, res, next) => {
