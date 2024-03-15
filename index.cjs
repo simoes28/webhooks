@@ -38,7 +38,7 @@ app.use("/newMessage", (req, res, next)=>{
 })
 
 app.use("/", (req, res, next)=>{
-    console.log("Hello World!")
+    res.send("Hello World!");
 })
 
 app.use((req, res, next) => {
