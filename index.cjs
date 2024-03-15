@@ -1,15 +1,14 @@
 require("dotenv").config();
 const express = require("express");
-const http = require("http");
-const socketIo = require("socket.io");
-const cors = require('cors');
-
-const app = express();
-app.use(cors({
-    origin: "*"
-}));
-const server = http.createServer(app);
-const io = socketIo(server);
+const app= express();
+const http = require("http").createServer(app);
+const socketIo = require('socket.io');
+(http, {
+    cors: {
+        origin: "*"
+    }
+})
+const io = socketIo(http);
 
 io.on('connection', (socket) => {
     console.log('Cliente conectado');
@@ -51,7 +50,7 @@ app.use((req, res, next) => {
 
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+http.listen(PORT, () => {
     console.log(`Server started at http://localhost:${PORT}`);
     console.log(`Socket.IO endpoint: http://localhost:${PORT}`);
 });
