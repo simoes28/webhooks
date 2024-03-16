@@ -26,6 +26,7 @@ app.use(express.json());
 //Captura webhooks:
 app.use("/newChat", (req, res, next)=>{
     const data= req.body;
+    console.log(data);
     io.emit("webhookNewChat", data);
 
     res.status(200).send("Webhook recebido com sucesso.")
@@ -34,6 +35,7 @@ app.use("/newChat", (req, res, next)=>{
 
 app.use("/newMessage", (req, res, next)=>{
     const data= req.body;
+    console.log(data);
     io.emit("webhookNewMessage", data);
 
     res.status(200).send("Webhook recebido com sucesso.")
