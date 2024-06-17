@@ -1,18 +1,18 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "index.cjs",
-            "use": "@vercel/node"
-        }
+      {
+        "src": "index.cjs",
+        "use": "@vercel/node"
+      }
     ],
     "routes": [
-        {
-            "src": "index.cjs",
-            "dest": "/"
-        }
+      {
+        "src": "/(.*)",
+        "dest": "index.cjs"
+      }
     ],
     "env": {
-        "PORT": "3004"
+      "PORT": "3004"
     }
-}
+  }
