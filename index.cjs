@@ -13,7 +13,7 @@ const io = require("socket.io")(server, {
 
 app.use(cors());
 
-io.post('connection', (socket) => {
+app.post('connection', (socket) => {
     console.log('Cliente conectado', socket.id);
   
     // Evento para adicionar o cliente a uma sala
