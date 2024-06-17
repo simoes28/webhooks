@@ -31,14 +31,10 @@ io.on('connection', (socket) => {
 app.use(express.json());
 
 //Captura webhooks:
-app.post("/", (req, res, next)=>{
-    res.status(200).send("Teste")
-})
 
 app.post("/newChat", (req, res, next)=>{
     const data= req.body;
     console.log(data);
-    res.status(200).send(`Webhook recebido com sucesso. Enviado para sala: ${room}`)
 
     if(validarDados(data)){
         const room= determinarSala(data);
