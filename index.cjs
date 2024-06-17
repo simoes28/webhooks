@@ -31,11 +31,6 @@ io.on('connection', (socket) => {
 app.use(express.json());
 
 //Captura webhooks:
-app.post("/", (req, res, next)=>{
-    const data=req.body
-    io.emit("TesteNovo", data);
-    res.status(200).send("Teste funcionou", data)
-})
 app.post("/newChat", (req, res, next)=>{
     const data= req.body;
     console.log(data);
