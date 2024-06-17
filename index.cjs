@@ -7,12 +7,7 @@ const io = require("socket.io")(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"]
-<<<<<<< HEAD
   }
-=======
-  },
-  transports: ['websocket']
->>>>>>> 7caa1a31b9f2b42a6bc187d5788b13139c000c59
 });
 
 app.use(cors());
