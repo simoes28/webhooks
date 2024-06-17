@@ -13,7 +13,7 @@ const io = require("socket.io")(server, {
 
 app.use(cors());
 
-app.post('connection', (socket) => {
+io.on('connection', (socket) => {
     console.log('Cliente conectado', socket.id);
   
     // Evento para adicionar o cliente a uma sala
@@ -31,7 +31,6 @@ app.post('connection', (socket) => {
 app.use(express.json());
 
 //Captura webhooks:
-
 app.post("/newChat", (req, res, next)=>{
     const data= req.body;
     console.log(data);
