@@ -38,6 +38,7 @@ app.post("/", (req, res, next)=>{
 app.post("/newChat", (req, res, next)=>{
     const data= req.body;
     console.log(data);
+    res.status(200).send(`Webhook recebido com sucesso. Enviado para sala: ${room}`)
 
     if(validarDados(data)){
         const room= determinarSala(data);
