@@ -178,7 +178,7 @@ app.post("/msgReadedHook", (req, res, next)=>{
 app.post("/msgSentHook", (req, res, next)=>{
     const data= req.body;
     console.log(data);
-    //Data= instancia, fila, chat_id
+    //Data= instancia, fila
 
     if(validarDados(data)){
         const room= determinarSala(data);
