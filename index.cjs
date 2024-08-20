@@ -53,7 +53,7 @@ app.post("/newChat", (req, res, next)=>{
 app.post("/newMessage", (req, res, next)=>{
     const data= req.body;
     console.log(data);
-    //Data= instancia, fila, numero_cliente, mensagem, client_id
+    //Data= instancia, fila, numero_cliente, mensagem, chat_id
 
     if(validarDados(data)){
         const room= determinarSala(data);
@@ -142,7 +142,7 @@ app.post("/msgReceivedByServerHook", (req, res, next)=>{
 app.post("/msgReceivedByUserHook", (req, res, next)=>{
     const data= req.body;
     console.log(data);
-    //Data= instancia, fila, client_id
+    //Data= instancia, fila, chat_id
 
     if(validarDados(data)){
         const room= determinarSala(data);
@@ -160,6 +160,7 @@ app.post("/msgReceivedByUserHook", (req, res, next)=>{
 app.post("/msgReadedHook", (req, res, next)=>{
     const data= req.body;
     console.log(data);
+    //Data= instancia, fila, chat_id
 
     if(validarDados(data)){
         const room= determinarSala(data);
