@@ -175,6 +175,24 @@ app.post("/msgReadedHook", (req, res, next)=>{
     }
 })
 
+app.post("/msgSentHook", (req, res, next)=>{
+    const data= req.body;
+    console.log(data);
+    //Data= instancia, fila, chat_id
+
+    if(validarDados(data)){
+        const room= determinarSala(data);
+        if(room){
+            io.to(room).emit("webhookmsgSentHook", data);
+            res.status(200).send(`Webhook recebido com sucesso. Enviado para sala: ${room}`);
+        }else{
+            res.status(400).send(`Erro ao determinar a sala correspondente. ${room}`)
+        }
+    }else {
+        res.status(400).send(`Dados do webhook inválidos. ${data}`);
+    }
+})
+
 app.post("/", (req, res, next)=>{
     res.send("Hello World!");
 })
