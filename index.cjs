@@ -33,6 +33,7 @@ app.use(express.json());
 app.post("/newChat", (req, res, next)=>{
     const data= req.body;
     console.log(data);
+    //Data= instancia, fila
 
     if(validarDados(data)){
         const room= determinarSala(data);
@@ -52,6 +53,7 @@ app.post("/newChat", (req, res, next)=>{
 app.post("/newMessage", (req, res, next)=>{
     const data= req.body;
     console.log(data);
+    //Data= instancia, fila, numero_cliente, mensagem, client_id
 
     if(validarDados(data)){
         const room= determinarSala(data);
@@ -69,6 +71,7 @@ app.post("/newMessage", (req, res, next)=>{
 app.post("/chatClosedHook", (req, res, next)=>{
     const data= req.body;
     console.log(data);
+    //Data= instancia, fila
 
     if(validarDados(data)){
         const room= determinarSala(data);
@@ -103,6 +106,7 @@ app.post("/typingHook", (req, res, next)=>{
 app.post("/authStatusHook", (req, res, next)=>{
     const data= req.body;
     console.log(data);
+    //Data= instancia, fila
 
     if(validarDados(data)){
         const room= determinarSala(data);
@@ -120,6 +124,7 @@ app.post("/authStatusHook", (req, res, next)=>{
 app.post("/msgReceivedByServerHook", (req, res, next)=>{
     const data= req.body;
     console.log(data);
+    //Data= instancia, fila
 
     if(validarDados(data)){
         const room= determinarSala(data);
@@ -137,6 +142,7 @@ app.post("/msgReceivedByServerHook", (req, res, next)=>{
 app.post("/msgReceivedByUserHook", (req, res, next)=>{
     const data= req.body;
     console.log(data);
+    //Data= instancia, fila, client_id
 
     if(validarDados(data)){
         const room= determinarSala(data);
