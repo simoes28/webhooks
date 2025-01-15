@@ -244,7 +244,7 @@ function determinarSala(data) {
   return `${data.instancia}_${data.fila}`;
 }
 
-const PORT = process.env.PORT || 3004;
+const PORT = process.env.PORT || 8005;
 server.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
   console.log(`Socket.IO endpoint: http://localhost:${PORT}`);
