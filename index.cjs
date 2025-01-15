@@ -4,9 +4,9 @@ const app = express();
 const cors = require("cors");
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
-  path: "/webhook",
+  path: "/webhook",  // A URL deve ser '/webhook', com a barra na frente
   cors: {
-    origin: "*",
+    origin: "*",  // Permitir qualquer origem (você pode restringir se necessário)
     methods: ["GET", "POST"],
   },
 });
