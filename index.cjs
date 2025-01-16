@@ -11,6 +11,7 @@ const io = socketIo(server, {
     methods: ["GET", "POST"],
   },
   path: "/webhook/socket.io", // A URL deve ser '/webhook', com a barra na frente
+  transports: ["polling", "websocket"],
 });
 
 app.use(cors());
