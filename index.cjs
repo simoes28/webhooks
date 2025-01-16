@@ -1,14 +1,16 @@
 const express = require("express");
 const http = require("http");
+const socketIo = require("socket.io");
+
 const app = express();
 const cors = require("cors");
 const server = http.createServer(app);
-const io = require("socket.io")(server, {
-  path: "/webhook",  // A URL deve ser '/webhook', com a barra na frente
+const io = socketIo(server, {
   cors: {
-    origin: "*",  // Permitir qualquer origem (você pode restringir se necessário)
+    origin: "*", // Permitir qualquer origem (você pode restringir se necessário)
     methods: ["GET", "POST"],
   },
+  path: "/webhook/socket.io", // A URL deve ser '/webhook', com a barra na frente
 });
 
 app.use(cors());
@@ -29,6 +31,12 @@ io.on("connection", (socket) => {
 });
 
 app.use(express.json());
+
+//TESTE
+app.post("/webhook", (req, res) => {
+  console.log("Webhook recebido!");
+  res.send("OK");
+});
 
 //Captura webhooks:
 app.post("/newChat", (req, res, next) => {
