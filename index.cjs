@@ -32,12 +32,6 @@ io.on("connection", (socket) => {
 
 app.use(express.json());
 
-//TESTE
-app.get("/webhook", (req, res) => {
-  console.log("Webhook recebido!");
-  res.send("OK");
-});
-
 //Captura webhooks:
 app.post("/newChat", (req, res, next) => {
   const data = req.body;
