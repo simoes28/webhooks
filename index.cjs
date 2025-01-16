@@ -14,7 +14,11 @@ const io = socketIo(server, {
   transports: ["polling", "websocket"],
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3007",
+  })
+);
 
 io.on("connection", (socket) => {
   console.log("Cliente conectado", socket.id);
