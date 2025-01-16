@@ -10,8 +10,8 @@ const io = socketIo(server, {
     origin: "http://localhost:3007", // Permitir qualquer origem (você pode restringir se necessário)
     methods: ["GET", "POST"],
   },
-  path: "/webhook/socket.io", // A URL deve ser '/webhook', com a barra na frente
-  transports: ["polling", "websocket"],
+  path: "/webhook", // A URL deve ser '/webhook', com a barra na frente
+  transports: ["websocket"],
 });
 
 app.use(
