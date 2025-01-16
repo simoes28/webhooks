@@ -7,18 +7,13 @@ const cors = require("cors");
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3007", // Permitir qualquer origem (você pode restringir se necessário)
+    origin: "*", // Permitir qualquer origem (você pode restringir se necessário)
     methods: ["GET", "POST"],
   },
   path: "/webhook", // A URL deve ser '/webhook', com a barra na frente
-  transports: ["websocket"],
 });
 
-app.use(
-  cors({
-    origin: "http://localhost:3007",
-  })
-);
+app.use(cors());
 
 io.on("connection", (socket) => {
   console.log("Cliente conectado", socket.id);
@@ -38,7 +33,7 @@ io.on("connection", (socket) => {
 app.use(express.json());
 
 //TESTE
-app.post("/webhook", (req, res) => {
+app.get("/webhook", (req, res) => {
   console.log("Webhook recebido!");
   res.send("OK");
 });
