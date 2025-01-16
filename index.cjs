@@ -7,7 +7,7 @@ const cors = require("cors");
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "*", // Permitir qualquer origem (você pode restringir se necessário)
+    origin: "http://localhost:3007", // Permitir qualquer origem (você pode restringir se necessário)
     methods: ["GET", "POST"],
   },
   path: "/webhook/socket.io", // A URL deve ser '/webhook', com a barra na frente
