@@ -10,7 +10,7 @@ const io = socketIo(server, {
     origin: "*", // Permitir qualquer origem (você pode restringir se necessário)
     methods: ["GET", "POST"],
   },
-  //path: "/webhook", // A URL deve ser '/webhook', com a barra na frente
+  path: "/webhook", // A URL deve ser '/webhook', com a barra na frente
 });
 
 app.use(cors());
