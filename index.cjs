@@ -10,7 +10,8 @@ const io = socketIo(server, {
     origin: "*", // Permitir qualquer origem (você pode restringir se necessário)
     methods: ["GET", "POST"],
   },
-  path: "/webhook", // A URL deve ser '/webhook', com a barra na frente
+  pingInterval: 25000, // Envia ping a cada 25 segundos
+  pingTimeout: 60000, // Espera até 60 segundos por uma resposta de pong
 });
 
 app.use(cors());
@@ -34,9 +35,11 @@ app.use(express.json());
 
 //Captura webhooks:
 app.post("/newChat", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/newChat
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila
+  //Data= {instancia: https://startsend.atenderbem.com, fila: 56}
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -54,9 +57,11 @@ app.post("/newChat", (req, res, next) => {
 });
 
 app.post("/newMessage", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/newMessage
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila, numero_cliente, mensagem, chat_id
+  //Data= {instancia: https://startsend.atenderbem.com, fila: 56, numero_cliente: {{clientNumber}}, mensagem: {{msgText}}, chat_id: {{chatId}}, user_id: {{userId}} }
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -74,9 +79,11 @@ app.post("/newMessage", (req, res, next) => {
 });
 
 app.post("/chatClosedHook", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/chatClosedHook
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila
+  //Data= {instancia: https://startsend.atenderbem.com, fila: 56}
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -113,9 +120,11 @@ app.post("/typingHook", (req, res, next) => {
 });
 
 app.post("/authStatusHook", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/authStatusHook
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila
+  //Data={instancia: https://startsend.atenderbem.com, fila: 56}
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -133,9 +142,11 @@ app.post("/authStatusHook", (req, res, next) => {
 });
 
 app.post("/msgReceivedByServerHook", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/msgReceivedByServerHook
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila
+  //Data= {instancia: https://startsend.atenderbem.com, fila: 56, chat_id: {{chatId}} }
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -153,9 +164,11 @@ app.post("/msgReceivedByServerHook", (req, res, next) => {
 });
 
 app.post("/msgReceivedByUserHook", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/msgReceivedByUserHook
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila, chat_id
+  //Data= {instancia: https://startsend.atenderbem.com, fila: 56, chat_id: {{chatId}} }
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -173,9 +186,11 @@ app.post("/msgReceivedByUserHook", (req, res, next) => {
 });
 
 app.post("/msgReadedHook", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/msgReadedHook
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila, chat_id
+  //Data= {instancia: https://startsend.atenderbem.com, fila: 56, chat_id: {{chatId}} }
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -193,9 +208,11 @@ app.post("/msgReadedHook", (req, res, next) => {
 });
 
 app.post("/msgSentHook", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/msgSentHook
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila
+  //Data= {instancia: https://startsend.atenderbem.com, fila: 56}
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -213,9 +230,11 @@ app.post("/msgSentHook", (req, res, next) => {
 });
 
 app.post("/msgDeletedHook", (req, res, next) => {
+  // LINK: https://webhook.startsend.com.br/msgDeletedHook
+
   const data = req.body;
   console.log(data);
-  //Data= instancia, fila
+  //Data= {instancia: https://startsend.atenderbem.com, fila: 56, chat_id: {{chatId}} }
 
   if (validarDados(data)) {
     const room = determinarSala(data);
