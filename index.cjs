@@ -17,7 +17,7 @@ const io = socketIo(server, {
 app.use(cors());
 
 io.on("connection", (socket) => {
-  console.log("Cliente conectado", socket.id);
+  // console.log("Cliente conectado", socket.id);
 
   // Evento para adicionar o cliente a uma sala
   socket.on("joinRoom", ({ url, queueId }) => {
@@ -38,7 +38,7 @@ app.post("/newChat", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/newChat
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56}
 
   if (validarDados(data)) {
@@ -60,7 +60,7 @@ app.post("/newMessage", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/newMessage
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56, numero_cliente: {{clientNumber}}, mensagem: {{msgText}}, chat_id: {{chatId}}, user_id: {{userId}} }
 
   if (validarDados(data)) {
@@ -82,7 +82,7 @@ app.post("/chatClosedHook", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/chatClosedHook
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56}
 
   if (validarDados(data)) {
@@ -102,7 +102,7 @@ app.post("/chatClosedHook", (req, res, next) => {
 
 app.post("/typingHook", (req, res, next) => {
   const data = req.body;
-  console.log(data);
+  // console.log(data);
 
   if (validarDados(data)) {
     const room = determinarSala(data);
@@ -123,7 +123,7 @@ app.post("/authStatusHook", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/authStatusHook
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data={instancia: https://startsend.atenderbem.com, fila: 56}
 
   if (validarDados(data)) {
@@ -145,7 +145,7 @@ app.post("/msgReceivedByServerHook", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/msgReceivedByServerHook
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56, chat_id: {{chatId}} }
 
   if (validarDados(data)) {
@@ -167,7 +167,7 @@ app.post("/msgReceivedByUserHook", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/msgReceivedByUserHook
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56, chat_id: {{chatId}} }
 
   if (validarDados(data)) {
@@ -189,7 +189,7 @@ app.post("/msgReadedHook", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/msgReadedHook
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56, chat_id: {{chatId}} }
 
   if (validarDados(data)) {
@@ -211,7 +211,7 @@ app.post("/msgSentHook", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/msgSentHook
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56}
 
   if (validarDados(data)) {
@@ -233,7 +233,7 @@ app.post("/msgDeletedHook", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/msgDeletedHook
 
   const data = req.body;
-  console.log(data);
+  // console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56, chat_id: {{chatId}} }
 
   if (validarDados(data)) {
@@ -262,7 +262,7 @@ function validarDados(data) {
 
 //Função para determinar sala do webhook:
 function determinarSala(data) {
-  console.log(data);
+  // console.log(data);
   return `${data.instancia}_${data.fila}`;
 }
 
