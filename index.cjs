@@ -60,7 +60,7 @@ app.post("/newMessage", (req, res, next) => {
   // LINK: https://webhook.startsend.com.br/newMessage
 
   const data = req.body;
-  // console.log(data);
+  console.log(data);
   //Data= {instancia: https://startsend.atenderbem.com, fila: 56, numero_cliente: {{clientNumber}}, mensagem: {{msgText}}, chat_id: {{chatId}}, user_id: {{userId}} }
 
   if (validarDados(data)) {
